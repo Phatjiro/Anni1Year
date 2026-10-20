@@ -103,7 +103,6 @@ function renderScrapbookTimeline(heartExplosion) {
         <div class="journal-paper-card">
           <div class="journal-top-bar">
             <span class="journal-chapter-tag">${mem.month}</span>
-            <span class="journal-date-tag">${mem.date}</span>
           </div>
 
           <h3 class="journal-title">${mem.title}</h3>
