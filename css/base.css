@@ -67,3 +67,8 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(234, 122, 147, 0.65);
 }
+
+body.locked-scroll {
+  overflow: hidden;
+  height: 100vh;
+}

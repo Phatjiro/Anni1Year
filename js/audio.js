@@ -16,6 +16,16 @@ export class MusicController {
       this.elements.toggleBtn.addEventListener('click', () => this.toggle());
     }
 
+    this.audio.addEventListener('play', () => {
+      this.isPlaying = true;
+      this.updateVisualState(true);
+    });
+
+    this.audio.addEventListener('pause', () => {
+      this.isPlaying = false;
+      this.updateVisualState(false);
+    });
+
     this.audio.addEventListener('error', () => {
       this.useSynthesizerFallback = true;
     });
@@ -66,19 +76,8 @@ export class MusicController {
       this.elements.status.textContent = playing ? 'Đang phát...' : 'Tạm dừng';
     }
     if (this.elements.toggleBtn) {
-      if (playing) {
-        this.elements.toggleBtn.innerHTML = `
-          <svg viewBox="0 0 24 24">
-            <path d="M6 4h4v16H6zM14 4h4v16h-4z"></path>
-          </svg>
-        `;
-      } else {
-        this.elements.toggleBtn.innerHTML = `
-          <svg viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"></path>
-          </svg>
-        `;
-      }
+      this.elements.toggleBtn.classList.toggle('is-playing', playing);
+      this.elements.toggleBtn.classList.toggle('is-paused', !playing);
     }
   }
 

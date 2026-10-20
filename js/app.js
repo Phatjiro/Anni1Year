@@ -1,8 +1,12 @@
 import { anniversaryConfig } from './config.js';
 import { MusicController } from './audio.js';
 import { HeartExplosion } from './heartExplosion.js';
+import { MemoryMatrix3D } from './matrix.js';
+import { matrixPhotos } from './matrixPhotos.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('locked-scroll');
+
   const heartExplosion = new HeartExplosion('heart-canvas');
 
   const musicController = new MusicController(anniversaryConfig.music, {
@@ -11,7 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn: document.getElementById('vinyl-toggle-btn')
   });
 
+  const matrixItems = (matrixPhotos && matrixPhotos.length > 0) ? matrixPhotos : anniversaryConfig.memories;
+  const matrix3d = new MemoryMatrix3D('matrix-3d-stage', matrixItems);
+
   initEnvelope(heartExplosion, musicController);
+  initMatrixScreenNavigation(heartExplosion, matrix3d);
   renderScrapbookTimeline(heartExplosion);
   initSecretModal(heartExplosion);
   startFloatingPetals();
@@ -42,6 +50,26 @@ function initEnvelope(heartExplosion, musicController) {
       openAction();
     }
   });
+}
+
+function initMatrixScreenNavigation(heartExplosion, matrix3d) {
+  const enterBtn = document.getElementById('enter-scrapbook-btn');
+  const matrixScreen = document.getElementById('matrix-screen');
+
+  if (enterBtn && matrixScreen) {
+    enterBtn.addEventListener('click', () => {
+      const rect = enterBtn.getBoundingClientRect();
+      heartExplosion.createHeartBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 40);
+
+      matrixScreen.classList.add('exited');
+      document.body.classList.remove('locked-scroll');
+
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        matrix3d.destroy();
+      }, 700);
+    });
+  }
 }
 
 function renderScrapbookTimeline(heartExplosion) {
