@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Cuốn Lưu Bút Kỷ Niệm 1 Năm - 365 Days Of Love</title>
+  <meta name="description" content="Trang web lưu bút kỷ niệm 1 năm yêu nhau với 12 bức ảnh, dòng nhật ký tình yêu và âm nhạc lãng mạn.">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <canvas id="heart-canvas"></canvas>
+
+  <div id="envelope-screen" class="envelope-screen">
+    <div id="envelope-wrapper" class="envelope-wrapper">
+      <div class="envelope-flap"></div>
+      <div class="envelope-pocket"></div>
+      <div class="envelope-letter-preview">
+        <span>Gửi Em</span>
+        <p>Cuốn lưu bút 365 ngày của chúng mình</p>
+      </div>
+      <button id="wax-seal-btn" class="wax-seal-button" aria-label="Mở thư tình yêu">
+        <svg class="wax-seal-icon" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="envelope-hint">
+      <span>Chạm vào con dấu sáp để mở cuốn lưu bút</span>
+    </div>
+  </div>
+
+  <main class="app-container">
+    <header class="header-hero">
+      <span class="hero-subtitle">Our 12 Chapters Of Love</span>
+      <h1 class="hero-title">Cuốn Lưu Bút Kỷ Niệm 1 Năm</h1>
+      <div class="hero-couple-names">Anh yêu em</div>
+    </header>
+
+    <section id="scrapbook-stream" class="scrapbook-stream"></section>
+
+    <section class="finale-section">
+      <button id="open-secret-btn" class="finale-btn">
+        Em có muốn...
+      </button>
+    </section>
+  </main>
+
+  <aside class="vinyl-player-widget">
+    <div id="vinyl-disc" class="vinyl-disc">
+      <div class="vinyl-center"></div>
+    </div>
+    <div class="vinyl-meta">
+      <span class="vinyl-song-title">Sugar - Maroon 5</span>
+      <span id="vinyl-status" class="vinyl-song-status">Tạm dừng</span>
+    </div>
+    <button id="vinyl-toggle-btn" class="vinyl-toggle-btn" aria-label="Phát hoặc tạm dừng nhạc">
+      <svg viewBox="0 0 24 24">
+        <path d="M9 18V5l12 7-12 6z"></path>
+      </svg>
+    </button>
+  </aside>
+
+  <div id="secret-modal" class="secret-modal-backdrop">
+    <div class="secret-letter-card">
+      <button id="close-secret-btn" class="modal-close-btn" aria-label="Đóng thư">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <h3 id="modal-letter-heading" class="letter-heading">Gửi Em</h3>
+      <div id="modal-letter-body" class="letter-body"></div>
+      <div id="modal-letter-sign" class="letter-sign"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
